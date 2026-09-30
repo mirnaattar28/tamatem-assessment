@@ -1,0 +1,45 @@
+{
+  "_requirements_map": "1) Background Art Direction -> art_direction.camera_angles / heroic_lighting / painterly_textures / character_poses, applied automatically to every prompt. 2) Style Challenge -> style_references (Style_Guides_Sparta images sent with every request) + art_direction.style_dna. 3) Prompt Configuration -> this file: style, camera settings and prompt structure (template).",
+
+  "model": "gemini-3-pro-image-preview",
+
+  "generation": {
+    "image_size": "2K"
+  },
+
+  "art_direction": {
+    "style_dna": "Official 'War of Sparta' key art. Match the Style_Guides_Sparta images: a dark, gritty, realistic digital painting (concept-art / card-art quality) with heroic realistic proportions, weathered ornate Greek-inspired armor, warm dusty gold, bronze and earth tones, deep crimson accents, a smoky dramatic atmosphere and visible painterly rendering. It must look hand-painted by the same artists who made the references, not generated, not 3D.",
+    "camera_angles": "Low hero angle, about 10-20 degrees below eye level, looking slightly up at the hero. Three-quarter view: body turned 30-45 degrees from the camera, face turned toward the viewer. 35-50mm cinematic lens feel with mild foreshortening on the nearest limb or weapon. Medium-full shot, hero framed from head to at least mid-thigh (full body when the action needs it), placed on a rule-of-thirds line with a clear diagonal. Shallow depth of field: hero razor sharp, background softly blurred. When there is a large creature or opponent, keep the hero dominant and overlap the opponent in the foreground or midground for depth.",
+    "heroic_lighting": "Strong warm golden-orange key light from the upper front-left, about 45 degrees above the hero. Bright warm rim light from behind that outlines the silhouette. Soft, low-intensity fill from the opposite side so shadows stay deep but readable. High contrast, roughly 4:1 key to fill, with rich dark shadows. Subtle atmospheric haze, dust, smoke and floating embers catching the light. Specular highlights on metal. A sunset or storm-lit sky behind the hero. One consistent light direction across the whole image. No neon or cool teal glows.",
+    "painterly_textures": "Visible digital oil-paint brushwork: broad confident strokes in the background, finer detailed strokes on the face, hands and armor. Hard edges only at the focal point, soft lost edges elsewhere. Metal shows scratches, dents, engraved ornament and warm reflected light. Leather, cloth and fur show weave and wear. Skin has painted variation (pores, scars, sweat, dirt) without airbrushed smoothness. Subtle canvas-like grain. Not photorealistic, not cel-shaded, not 3D-rendered, not vector.",
+    "character_poses": "A dynamic, powerful heroic pose built on a strong diagonal line of action, weight shifted onto one leg (contrapposto), a clear readable silhouette, limbs and weapon overlapping for depth, a fierce focused expression and mid-action energy (motion in cloth, hair and dust). Always follow the action the user describes (fighting, swimming, riding, etc.) and express it in this heroic posing style. Never a stiff standing pose. Hands anatomically correct with the right number of fingers, weapons held in a believable grip.",
+    "composition": "One clearly dominant hero as the focal point. An epic painterly environment (Greek temple ruins, battlefield, sea, stormy sunset) that supports but never competes with the hero. Foreground, midground and background layers for depth. Full-bleed artwork.",
+    "negative": "no text, letters or watermark, no logos or UI, no extra or missing limbs, no deformed hands or faces, no cartoon or cel-shaded look, no clean vector outlines, no airbrushed plastic skin, no 3D render or game-engine look, no photograph look, no neon or teal glow, no modern objects, no flat lighting, no blurry or smeared subject."
+  },
+
+  "style_references": {
+    "folder": "Style_Guides_Sparta",
+    "extensions": [".png", ".jpg", ".jpeg", ".webp"],
+    "max_images": 8,
+    "max_side": 1280,
+    "selection": "spread",
+    "pinned": [],
+    "label": "STYLE REFERENCES (copy the art style only, not these characters):",
+    "instruction": "The attached STYLE REFERENCE images are the official War of Sparta art style guides. Match their brushwork, color palette, lighting, edge handling, texture and level of detail exactly, so the result looks painted by the same artists. Use them ONLY for style. Do NOT copy their characters, poses or compositions."
+  },
+
+  "character_references": {
+    "enabled": true,
+    "max_characters": 3,
+    "match_by_filename": true,
+    "characters": [
+      { "file": "Herclues.jpg", "names": ["Hercules", "Herclues"] },
+      { "file": "Hippolyt.jpg", "names": ["Hippolyta", "Hippolyt"] },
+      { "file": "Atlanta.jpg", "names": ["Atalanta", "Atlanta"] }
+    ],
+    "label": "CHARACTER REFERENCE ({name}): keep this hero's identity.",
+    "instruction": "The CHARACTER REFERENCE image(s) define the exact identity of the named hero(es). Keep the same face shape, facial features, hair, skin tone, body build and signature armor/costume design. Only change the pose, action, scene, and any extra details the user explicitly asked for. Render the result in the War of Sparta painted style."
+  },
+
+  "template": "{style_reference_instruction}\n\nSUBJECT (what the user asked for, always follow it): {user_prompt}\n\nThe art direction below controls HOW the subject is painted and framed. The user's subject controls WHAT is shown.\n\nSTYLE: {style_dna}\n\nCAMERA ANGLES: {camera_angles}\n\nHEROIC LIGHTING: {heroic_lighting}\n\nPAINTERLY TEXTURES: {painterly_textures}\n\nCHARACTER POSES: {character_poses}\n\nCOMPOSITION: {composition}\n\nAVOID: {negative}"
+}
